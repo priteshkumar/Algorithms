@@ -1,4 +1,5 @@
 package com.mavixk.ds;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RecursiveDemo1 {
@@ -21,6 +22,17 @@ public class RecursiveDemo1 {
         genFibonacci(100);
        // System.out.println(genFibonacciv2(100));
         printPattern(3);
+        factorial1(5);
+        factorial2(5);
+    }
+
+    public static void factorial2(int n) {
+        int[] factorials = new int[n + 1];
+        Arrays.fill(factorials, 1);
+        for (int i = 0; i <= n - 1; i++) {
+            factorials[i + 1] = (i + 1) * factorials[i];
+        }
+        System.out.println(factorials[n]);
     }
 
     public static boolean isPalindrome(String s){
@@ -90,6 +102,35 @@ public class RecursiveDemo1 {
     public static int genFibonacciv2(int n){
         if(n == 0 || n == 1)return n;
         else return (genFibonacciv2(n-1) + genFibonacciv2(n-2))%10;
+    }
+
+
+    public static int genFibonacciV3(int n){
+        int a = 0,b=1;
+        int c=n;
+        for(int i=2;i<= n;i++){
+            c = (a+b)%10;
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+
+    public static void factorial1(int n){
+        int factorial=1;
+        int index=1;
+        for(int i=0;i<=Math.pow(n,n);i++){
+            //System.out.println("hello");
+            if(i==factorial*index){
+                factorial=i;
+                index+=1;
+                //System.out.println(index);
+                if(index==n+1){
+                    System.out.println(factorial);
+                    break;
+                }
+            }
+        }
     }
 
     public static String printPattern(int n){
