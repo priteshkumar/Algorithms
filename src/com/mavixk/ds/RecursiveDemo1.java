@@ -19,11 +19,11 @@ public class RecursiveDemo1 {
         System.out.println(isSubsequence("bat","tabcbtad"));
         int[] a = {1,2,3,4};
         //printSubsets(a);
-        genFibonacci(100);
-       // System.out.println(genFibonacciv2(100));
-        printPattern(3);
-        factorial1(5);
-        factorial2(5);
+        genFibonacci(150);
+       //System.out.println(genFibonacciv2(100));
+        //printPattern(3);
+        //factorial1(5);
+        //factorial2(5);
     }
 
     public static void factorial2(int n) {
@@ -94,14 +94,14 @@ public class RecursiveDemo1 {
         seq[0] = 0;
         seq[1] = 1;
         for(int i=2;i<=n;i++){
-            seq[i] = (seq[i-1] + seq[i-2])%10;
+            seq[i] = (seq[i-1] + seq[i-2]);
         }
         System.out.println(seq[n]);
     }
 
     public static int genFibonacciv2(int n){
         if(n == 0 || n == 1)return n;
-        else return (genFibonacciv2(n-1) + genFibonacciv2(n-2))%10;
+        else return (genFibonacciv2(n-1) + genFibonacciv2(n-2));
     }
 
 
