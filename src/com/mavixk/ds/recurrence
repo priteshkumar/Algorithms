@@ -1,0 +1,38 @@
+recurrence relation 1:
+t(n) = 3t(n-1) if n > 0
+        1 otherwise
+
+ t(n-1)= 3t(n-2)  => t(n-1) =  3^2 * t(n-2)
+ t(n-2) = 3t(n-3) => t(n-1) = 3^3 * t(n-3)
+
+ Hence,
+ t(n) = (3^k)t(n-k) => terminates when n-k = 0 => n = k
+ t(n) <= O(3^n) as(t(0) = 1)
+
+
+ t(n) = 2t(n-1) - 1 if n > 0
+        1 otherwise
+
+ t(n-1) = 2t(n-2) - 1 => t(n) = 2 * 2 * t(n-2) - 2* 1
+ t(n-2) = 2t(n-3) - 1 => t(n) = 2 * 2 * 2 * t(n-3) - 3*1
+
+ t(n) = (2^k)t(n-k) - k , this terminates when n-k = 0 => n = k
+ t(n) = 2^n - n
+
+
+t(n) = t(n-1) + t(n-2) + 1
+t(n-1) = t(n-2) + t(n-3) + 1
+t(n) <= 2t(n-1) + 1
+t(n-1) <= 2t(n-2) + 1 => t(n) <= 2 * 2t(n-2) + 2*1
+t(n) <= (2^k)t(n-k) n-k = 1 => k = n-1
+
+t(n) = n^2 + (n-3)^2 + n + (n-6)^2 + (n - 3(k-1))^2
+
+
+t(n) = 2t(sqrt(n)) + logn
+t(sqrt(n)) = 2t(sqrt(sqrt(n)) + log(sqrt(n)) = 2t(n^(1/4)) + 1/2 * (logn)
+t(n) = 2 * (2t(n^(1/4)) + 1/2 * logn) + logn = 4 (t(n^(1/4)) + 2logn
+
+t(n^(1/4)) = 2t(n^(1/8)) + 1/4 * logn
+=> t(n) = 4 * (2t(n^(1/8) + 1/4 * logn) + 2logn = 8 * t(n^(1/8)) + 3logn
+=>t(n) = 2^(k+1)t(n^(1/2^(k+1)) + (k+1)logn
