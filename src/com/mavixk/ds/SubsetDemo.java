@@ -9,7 +9,8 @@ public class SubsetDemo {
         List<Integer> list = new ArrayList<Integer>();
         //printAllsubsets(nums,list,nums.size()-1);
         String out = "";
-        printSubsetOfLen(nums,out,nums.size(),3);
+        //printSubsetOfLen(nums,out,nums.size(),3);
+        printSubsetWithRepetitions(nums,list,2,0,4);
     }
 
     /**
@@ -55,6 +56,19 @@ public class SubsetDemo {
         for(int i = index-1;i >= 0;i--){
            // System.out.println(out + " " + i + " " + index);
             printSubsetOfLen(a,a.get(i) + " " + out,i,k-1);
+        }
+    }
+
+    public static void printSubsetWithRepetitions(List<Integer> a,List<Integer> out,int k,int i,int n){
+        if(out.size() == k){
+            System.out.println(out);
+            return;
+        }
+
+        for(int j =i; j < n;j++){
+            out.add(a.get(j));
+            printSubsetWithRepetitions(a,out,k,j,n);
+            out.remove(out.size()-1);
         }
     }
 }
