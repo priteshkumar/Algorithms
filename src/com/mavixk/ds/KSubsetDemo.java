@@ -1,16 +1,19 @@
 package com.mavixk.ds;
-
 import java.util.*;
 
 public class KSubsetDemo {
 
   public static void main(String[] args) {
-    int[] nums = {1, 2, 3, 4};
+    int[] nums = {1,2,3,4,5,6};
+    int[] nums2 = {1,2,2,3,4};
     //Arrays.sort(nums);
     String out = "";
     int k = 2;
     //printKSubsets(nums,out,k,nums.length);
-    printKSubsetsFwd(nums, out, k, 0);
+    //printKSubsetsFwd(nums, out, k, 0);
+    int sum = 7;
+    List<Integer> list = new ArrayList<Integer>();
+    printSubsetsKSum(nums2, list, sum, nums2.length - 1);
   }
 
   /**
@@ -56,5 +59,21 @@ public class KSubsetDemo {
     for (int i = index; i < nums.length; i++) {
       printKSubsetsFwd(nums, out + " " + nums[i], k - 1, i + 1);
     }
+  }
+
+  //{1,2,3,4} , sum = 4 => {1,3} , {4}
+  public static void printSubsetsKSum(int[] nums, List<Integer> out, int sum, int index) {
+    if (sum == 0) {
+      System.out.println(out);
+      return;
+    }
+    if (index < 0 || sum < 0) {
+          return;
+    }
+
+    printSubsetsKSum(nums, out, sum, index - 1);
+    List<Integer> alist = new ArrayList<Integer>(out);
+    alist.add(nums[index]);
+    printSubsetsKSum(nums, alist, sum - nums[index], index - 1);
   }
 }
