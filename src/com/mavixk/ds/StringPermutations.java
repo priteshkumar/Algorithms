@@ -5,17 +5,18 @@ import java.util.*;
 public class StringPermutations {
 
   public static void main(String[] args) {
-    String s = "abc";
-    permuteString("",s);
+    String s = "cab";
+    permuteString("", s);
   }
 
   /**
    * Prints all permutations of string (n!)
+   *
    * @param prefix
    * @param remaining
    */
   public static void permuteString(String prefix, String remaining) {
-    System.out.println(prefix + "-->" + remaining);
+    // System.out.println(prefix + "-->" + remaining);
     int n = remaining.length();
     if (n == 0) {
       System.out.println(prefix);
@@ -25,5 +26,9 @@ public class StringPermutations {
       permuteString(prefix + remaining.charAt(i),
           remaining.substring(0, i) + remaining.substring(i + 1));
     }
+  }
+
+  public static void permuteStringKLen(String prefix, String remaining, int k) {
+
   }
 }
