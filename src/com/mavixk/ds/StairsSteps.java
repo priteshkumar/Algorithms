@@ -5,14 +5,14 @@ public class StairsSteps {
   public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
     int n = scan.nextInt();
-    //System.out.println(numPartitions("",0,n,0));
+    System.out.println(numPartitions("",0,n,0));
     System.out.println("total ways: " + numSteps(0,n,0));
   }
 
   public static int numPartitions(String res,int total,int n,int count){
     int result=0;
     if(total == n){
-      System.out.println(res);
+    //  System.out.println(res);
       return ++count;
     }
     if(total > n){
