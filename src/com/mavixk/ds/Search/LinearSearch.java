@@ -15,9 +15,17 @@ public class LinearSearch {
         System.out.println(linearSearchV2(b,5.2));
         String[] c = {"docker","jenkins","aws","ansible"};
         System.out.println(linearSearchV2(c,"aws"));
+        System.out.println(linearSearchRecur(c,"jenkins",0));
+        System.out.println(linearSearchRecur(c,"buildbot",0));
 
     }
 
+    /**
+     * Iterative linear search for int
+     * @param nums
+     * @param key
+     * @return
+     */
     public static int linearSearch(int[] nums,int key){
         int index = -1;
         int i = 0;
@@ -31,6 +39,13 @@ public class LinearSearch {
         return index;
     }
 
+    /**
+     * Iterative generic linear search
+     * @param a
+     * @param key
+     * @param <T>
+     * @return
+     */
     public static <T> int linearSearchV2(T[] a,T key){
         int index = -1;
         int i = 0;
@@ -42,5 +57,23 @@ public class LinearSearch {
             i++;
         }
         return index;
+    }
+
+    /**
+     * Recursive generic linear search
+     * @param a
+     * @param key
+     * @param i
+     * @param <T>
+     * @return
+     */
+    public static <T> int linearSearchRecur(T[] a,T key,int i){
+        int index = -1;
+        if(i >= a.length)return index;
+        if(a[i].equals(key)){
+            index = i;
+            return index;
+        }
+        return linearSearchRecur(a,key,i+1);
     }
 }
