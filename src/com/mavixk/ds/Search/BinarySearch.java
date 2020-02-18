@@ -3,6 +3,18 @@ import java.util.*;
 
 public class BinarySearch {
   public static void main(String[] args){
+    Scanner input = new Scanner(System.in);
+    int n = input.nextInt();
+    for(int i=0; i < n;i++){
+      String s = input.next();
+      char[] a = s.toCharArray();
+      Arrays.sort(a);
+      s = "";
+      for(int j=0 ; j < a.length;j++){
+        s = s + a[j];
+      }
+      System.out.println(s);
+    }
     Integer[] nums = {1,2,3,4,7,9,10,11};
     System.out.println("10 found at : " + binarySearch(nums,10));
     System.out.println("2 found at : " + binarySearch(nums,2));
@@ -32,6 +44,23 @@ public class BinarySearch {
       }
       else if (a[mid] > key)high = mid-1;
       else if(a[mid] < key)low = mid+1;
+    }
+    return -1;
+  }
+
+  public static int binarySearch(Player[] players,String key){
+    Player[] a = players;
+    int low = 0;
+    int high = a.length -1;
+    int mid = -1;
+    while(low <= high){
+      mid = low + (high - low)/2;
+
+      if(a[mid].getEmail().equals(key)){
+        return mid;
+      }
+      else if (a[mid].getEmail().compareTo(key) > 0)high = mid-1;
+      else if(a[mid].getEmail().compareTo(key) < 0)low = mid+1;
     }
     return -1;
   }
