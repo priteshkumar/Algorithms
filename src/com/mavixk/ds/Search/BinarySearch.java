@@ -2,19 +2,8 @@ package com.mavixk.ds.Search;
 import java.util.*;
 
 public class BinarySearch {
+
   public static void main(String[] args){
-    Scanner input = new Scanner(System.in);
-    int n = input.nextInt();
-    for(int i=0; i < n;i++){
-      String s = input.next();
-      char[] a = s.toCharArray();
-      Arrays.sort(a);
-      s = "";
-      for(int j=0 ; j < a.length;j++){
-        s = s + a[j];
-      }
-      System.out.println(s);
-    }
     Integer[] nums = {1,2,3,4,7,9,10,11};
     System.out.println("10 found at : " + binarySearch(nums,10));
     System.out.println("2 found at : " + binarySearch(nums,2));
