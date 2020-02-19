@@ -31,6 +31,12 @@ public class BinarySearchProblems {
     System.out.println(findRotationPoint(words2));
     String[] words3 = {"grape","orange","plum","radish","apple"};
     System.out.println(findRotationPoint(words3));
+
+    int[] b = {1,2,4,4,4,4,6,7,7,7,9};
+    System.out.println("first occurence of 4 is " + findLowerBound(b,4));
+    System.out.println("last occurence of 4 is " + findUpperBound(b,4));
+    System.out.println("first occurence of 7 is " + findLowerBound(b,7));
+    System.out.println("first occurence of 9 is " + findLowerBound(b,9));
   }
 
   public static long findfloorSqrt(long x){
@@ -75,35 +81,73 @@ public class BinarySearchProblems {
     return (int)result;
   }
 
+  /**
+   * Finds number of rotations for sorted rotated array
+   * @param a
+   * @return
+   */
   public static int findRotationPoint(String[] a){
+    int low = 0;
+    int high = a.length -1;
+    int mid = 0;
+    int n = a.length;
+    while(low <= high){
+      if(a[low].compareTo(a[high]) <= 0)return low;
+      mid = low + (high - low)/2;
+      int next = (mid + 1)%n;
+      int prev = (mid-1+n)%n;
+      if(a[mid].compareTo(a[prev]) <=0 && a[mid].compareTo(a[next]) <= 0)
+        return mid;
+      if(a[mid].compareTo(a[high]) <= 0)
+        high = mid -1;
+      if(a[mid].compareTo(a[low]) >= 0)
+        low = mid +1;
+    }
+    return -1;
+  }
 
+  /**
+   * Finds the first occurence of key in the array
+   * lower bound is given as:
+   * mid == low && a[low] == key || a[mid] == key && a[mid-1] < key
+   * @param a
+   * @param key
+   * @return int first index of key
+   */
+  public static int findLowerBound(int[] a , int key){
     int low = 0;
     int high = a.length - 1;
-    int mid = -1;
+    int mid = 0;
     while(low <= high){
       mid = low + (high - low)/2;
-      if(low == high)return low;
-      if(low == high -1){
-        if(a[low].compareTo(a[high]) > 0)
-          return high;
-        else
-          return low;
-      }
+      if((mid == low && a[mid] == key) || (a[mid] == key && a[mid-1] < key))
+        return mid;
+      else if(a[mid] >= key)
+        high = mid -1;
+      else
+        low = mid + 1;
+    }
+    return -1;
+  }
 
-      if(a[mid].compareTo(a[mid-1]) < 0  && a[mid].compareTo(a[mid+1]) < 0)return mid;
-      else if(a[mid].compareTo(a[low]) > 0){
-        if(a[mid].compareTo(a[high]) < 0)
-          high = mid - 1;
-        else
-          low = mid + 1;
-
-      }
-      else if(a[mid].compareTo(a[low]) < 0){
-        if(a[mid].compareTo(a[high]) < 0)
-          high = mid -1;
-        else
-          low = mid + 1;
-      }
+  /**
+   * Finds the last occurence of key in array
+   * @param a
+   * @param key
+   * @return int last index of key
+   */
+  public static int findUpperBound(int[] a , int key){
+    int low = 0;
+    int high = a.length -1;
+    int mid = 0;
+    while(low <= high){
+      mid = low + (high - low)/2;
+      if((mid == high && a[mid] == key) || (a[mid] == key && key < a[mid+1]))
+        return mid;
+      else if(a[mid] <= key)
+        low = mid +1;
+      else
+        high = mid -1;
     }
     return -1;
   }
