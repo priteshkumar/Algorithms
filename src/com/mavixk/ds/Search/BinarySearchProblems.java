@@ -3,6 +3,8 @@ import java.util.*;
 
 public class BinarySearchProblems {
   public static void main(String[] args){
+    int val = -1;
+    System.out.println((val + 20)% 20);
     Scanner input = new Scanner(System.in);
     long n = input.nextLong();
     //find floor squareroot
