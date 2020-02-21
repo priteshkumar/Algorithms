@@ -84,4 +84,32 @@ public class MatrixSearch {
     return -1;
   }
 
+  /**
+   * Searches element in matrix.
+   * all rows and all columns are sorted in ascending order
+   * Search can traverse at most 2n points O(n) time complexity.
+   * @param a
+   * @param row
+   * @param col
+   * @param k
+   * @return
+   */
+  public static int matrixSearchV2(int[][] a,int row, int col,int k){
+    int rhigh = row -1;
+    int chigh = 0;
+    int rmid = 0;
+    if((k < a[0][0]) || (k > a[row-1][col-1]))return -1;
+    while(true){
+      if(a[rhigh][chigh] == k)return 1;
+      else if(a[rhigh][chigh] < k){
+        chigh = chigh + 1;
+      }
+      else if(a[rhigh][chigh] > k){
+        rhigh = rhigh -1;
+      }
+      if(chigh >= col || rhigh < 0)
+        break;
+    }
+    return -1;
+  }
 }
