@@ -1,4 +1,5 @@
 package com.mavixk.ds.Sorting;
+
 import java.util.*;
 
 class NamesSorting {
@@ -6,13 +7,13 @@ class NamesSorting {
   public static void main(String ss[]) {
     Scanner scanner = new Scanner(System.in);
     int size = scanner.nextInt();
-  //  String firstNames[] = new String[10];
-   // String lastNames[] = new String[10];
+    //  String firstNames[] = new String[10];
+    // String lastNames[] = new String[10];
     String[] firstNames = {"janella", "arianna", "bob", "sheryll",
-        "katelynn", "alphonso", "bertha", "ivette", "michiko ","evelin"};
+        "katelynn", "alphonso", "bertha", "ivette", "michiko ", "evelin"};
 
-    String[] lastNames = {"valene" ,"krista", "lyn", "melony", "laila", "laree", "raylene",
-        "lynwood ","tim ","keech"};
+    String[] lastNames = {"valene", "krista", "lyn", "melony", "laila", "laree", "raylene",
+        "lynwood ", "tim ", "keech"};
   /*  for (int i = 0; i < size; i++) {
       firstNames[i] = scanner.next().toLowerCase();
     }
@@ -27,21 +28,21 @@ class NamesSorting {
     }
     System.out.println("print lastnames");
     for (int i = 0; i < lastNames.length; i++) {
-      System.out.println(lastNames[lastNames.length -i -1]);
+      System.out.println(lastNames[lastNames.length - i - 1]);
     }
   }
 
-  public static String[] insertionSort(String[] names,boolean reverse){
+  public static String[] insertionSort(String[] names, boolean reverse) {
     int n = names.length;
     int j = 0;
     boolean flag = false;
-    for(int i=1;i < n;i++){
+    for (int i = 1; i < n; i++) {
       j = i;
-      while(j > 0 && (names[j].compareTo(names[j-1]) < 0)){
-        String temp = names[j-1];
-        names[j-1] = names[j];
+      while (j > 0 && (names[j].compareTo(names[j - 1]) < 0)) {
+        String temp = names[j - 1];
+        names[j - 1] = names[j];
         names[j] = temp;
-        j = j -1;
+        j = j - 1;
       }
     }
     return names;
