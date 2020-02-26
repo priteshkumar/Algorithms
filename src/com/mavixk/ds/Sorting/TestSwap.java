@@ -7,7 +7,16 @@ public class TestSwap {
     int[] nums = {1, 2, 3, 4};
     //changeValues(nums,1,2);
   //  printArray(nums);
-    Scanner scan = new Scanner(System.in);
+    int[] a = {1,2,3};
+    int[] b = {4,5,6,7};
+    int[] c = {8,9,10,11};
+    int[][] d = {a,b,c};
+    ArrayList<Integer> alist = new ArrayList<Integer>(10);
+    alist.add(20);
+    alist.add(30);
+    System.out.println(alist.size());
+
+     Scanner scan = new Scanner(System.in);
     int n = scan.nextInt();
     String[] s = new String[n];
 
