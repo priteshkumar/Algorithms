@@ -93,6 +93,7 @@ public class BubbleSortDemo {
    * @param a
    */
   public static void insertionSortV2(int[] a){
+
     int n = a.length;
     int j = -1;
     for(int i=1;i < n;i++){

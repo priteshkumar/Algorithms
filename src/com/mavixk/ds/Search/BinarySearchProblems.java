@@ -4,7 +4,9 @@ import java.util.*;
 public class BinarySearchProblems {
   public static void main(String[] args){
     int val = -1;
-    System.out.println((val + 20)% 20);
+   // System.out.println((val + 20)% 20);
+    int[] d = {0,1,2,3,4,5,6,7,8,10};
+    System.out.println("first occurence of 0 is " + findLowerBound(d,1));
     Scanner input = new Scanner(System.in);
     long n = input.nextLong();
     //find floor squareroot
@@ -120,7 +122,10 @@ public class BinarySearchProblems {
     int low = 0;
     int high = a.length - 1;
     int mid = 0;
+    int k = 0;
     while(low <= high){
+      k = k + 1;
+      System.out.println(k);
       mid = low + (high - low)/2;
       if((mid == low && a[mid] == key) || (a[mid] == key && a[mid-1] < key))
         return mid;
