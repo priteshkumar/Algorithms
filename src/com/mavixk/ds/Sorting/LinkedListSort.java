@@ -73,6 +73,7 @@ class LinkedList{
 
 
 public class LinkedListSort {
+
   public static void main(String[] args){
     LinkedList list = new LinkedList();
     for(int i=1;i <= 10;i++){
