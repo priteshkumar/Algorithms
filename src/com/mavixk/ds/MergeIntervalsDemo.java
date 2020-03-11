@@ -38,7 +38,6 @@ public class MergeIntervalsDemo {
 
   }
 
-
   public static ArrayList<Interval> insertInterval(ArrayList<Interval> intervals,
       Interval newInterval) {
     ArrayList<Interval> res = new ArrayList<Interval>();
