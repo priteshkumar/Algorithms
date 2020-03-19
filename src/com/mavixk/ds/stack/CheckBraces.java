@@ -19,17 +19,18 @@ public class CheckBraces {
     System.out.println(checkDuplicate(exp));
   }
 
-  //(a + (b +c))
+  /**
+   * check if exp has duplicate parenthesis
+   * exp is balanced
+   * @param exp
+   * @return
+   */
   public static boolean checkDuplicate(String exp){
     Stack<Character> s = new Stack<Character>();
     boolean flag = false;
-    int lasto = -1;
-    int firstc = -1;
     for(int i=0; i < exp.length();){
       while(i < exp.length() && exp.charAt(i) != ')'){
         s.push(exp.charAt(i));
-        if(exp.charAt(i) == '(')
-          lasto = i;
         i++;
       }
       if(i >= exp.length())break;
