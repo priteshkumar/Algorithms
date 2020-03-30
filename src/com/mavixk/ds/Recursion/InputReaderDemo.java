@@ -1,16 +1,18 @@
-package com.mavixk.ds;
+package com.mavixk.ds.Recursion;
 import java.util.*;
 
 public class InputReaderDemo {
   static Scanner scan = new Scanner(System.in);
   public static void main(String[] args){
+    ArrayList<Integer> a = new ArrayList<Integer>(Arrays.asList(1));
     checkInput();
     scan.close();
   }
 
   public static void checkInput(){
     int c = scan.nextInt();
-    scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+
     while(c-- > 0) {
       int n = scan.nextInt();
       scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");

@@ -17,6 +17,7 @@ public class CheckBraces {
     System.out.println(checkDuplicate(exp));
     exp = "(2)";
     System.out.println(checkDuplicate(exp));
+
   }
 
   /**

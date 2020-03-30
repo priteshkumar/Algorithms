@@ -8,6 +8,7 @@ class QStack{
   public QStack(){
     this.q1 = new LinkedList<Integer>();
     this.q2 = new LinkedList<Integer>();
+    
   }
 
   public void push(int data){

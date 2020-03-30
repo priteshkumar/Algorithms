@@ -6,12 +6,21 @@ public class StackDemo {
 
   public static void main(String[] args) {
     Stack<Integer> s = new Stack<Integer>();
+    int[] d = {-1,4,-3,7,8,-8,-2,5,3,10};
+    for(int i=0;i < d.length;i++){
+      s.push(d[i]);
+    }
+    Stack<Integer> temp = sortStack(s);
+    System.out.println(temp.elementAt(temp.size()-4));
+
+    s.push(-1);
     s.push(11);
     s.push(22);
     s.push(33);
     s.push(44);
     s.push(55);
     s.push(66);
+    System.out.println(s.elementAt(s.size()-1));
     char a = '(';
     char b = ')';
     String c = String.valueOf(a) + b;
@@ -51,5 +60,28 @@ public class StackDemo {
       }
     }
     return (s.empty() == true) ? 1 : 0;
+  }
+
+  public static Stack < Integer > sortStack(Stack < Integer > input) {
+    //write your code here
+    Stack<Integer> temp = new Stack<Integer>();
+    while(input.empty() == false){
+      int val = input.pop();
+      if(temp.empty() == true)
+        temp.push(val);
+      else if(temp.empty() == false && val >= temp.peek())
+        temp.push(val);
+      else{
+        while(temp.empty() == false){
+          if(val < temp.peek()){
+            input.push(temp.pop());
+          }
+          else
+            break;
+        }
+        temp.push(val);
+      }
+    }
+    return temp;
   }
 }

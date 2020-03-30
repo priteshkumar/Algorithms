@@ -45,6 +45,7 @@ public class QueueDemo {
     q.add(1);
     q.add(2);
     q.add(23);
+
     System.out.println(q.peek());
     q.remove();
     System.out.println(q.peek());
