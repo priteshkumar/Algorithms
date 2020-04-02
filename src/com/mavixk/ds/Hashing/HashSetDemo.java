@@ -11,6 +11,19 @@ public class HashSetDemo {
 
   public static boolean checkContiguous(int[] a){
     HashSet<Integer> m = new HashSet<Integer>();
+    Map<Integer,String> map = new HashMap<>();
+    map.put(1,"A");
+    map.put(2,"A");
+    map.put(3,"B");
+    LinkedHashSet<String> s = new LinkedHashSet<>();
+    for(Integer val:map.keySet()){
+      s.add(map.get(val));
+    }
+    Iterator<String> c = s.iterator();
+    while(c.hasNext()){
+      System.out.print(c.next() + " ");
+    }
+
     for(int i=0; i < a.length;i++){
       m.add(a[i]);
     }

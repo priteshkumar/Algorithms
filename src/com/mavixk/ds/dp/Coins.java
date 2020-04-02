@@ -9,6 +9,10 @@ public class Coins {
     System.out.println(permuteWays(coins,15));
     System.out.println(permuteWays(coins,10));
     System.out.println(permuteWays(coins,9));*/
+    coins = new int[]{186,419,83,408};
+    Arrays.sort(coins);
+    int pay = 6249;
+    System.out.println(coinChange(coins,pay));
     coins = new int[]{1,2,3};
     System.out.println(permuteWays(coins,4));
     System.out.println(permuteWays(coins,3));
@@ -17,9 +21,8 @@ public class Coins {
     System.out.println(permuteWays(coins,10));
     coins = new int[]{18, 24, 23, 10, 16, 19, 2, 9, 5, 12, 17, 3, 28, 29, 4, 13, 15, 8};
     Arrays.sort(coins);
-    int pay = 458;
+    pay = 458;
     System.out.println(permuteWays(coins,pay));
-    System.out.println(Integer.MAX_VALUE);
   }
 
   /**
@@ -60,5 +63,29 @@ public class Coins {
       }
     }
     return res[pay];
+  }
+
+  public static int coinChange(int[] coins, int amount) {
+    int[][] res = new int[amount+1][coins.length+1];
+
+    for(int j=0;j <= coins.length;j++)
+      res[0][j] = 0;
+
+    for(int j=1; j <= coins.length;j++){
+      int d = coins[j-1];
+      for(int i=1; i <= amount;i++){
+        if(j == 1){
+          res[i][j] = (i % d == 0)?i/d:Integer.MAX_VALUE;
+        }
+        else{
+          res[i][j] = res[i][j-1];
+          if(d <= i && res[i-d][j] != Integer.MAX_VALUE)
+            res[i][j] = Math.min(res[i][j],1 + res[i-d][j]);
+        }
+      }
+
+    }
+    int val = res[amount][coins.length];
+    return val < Integer.MAX_VALUE?val:-1;
   }
 }
