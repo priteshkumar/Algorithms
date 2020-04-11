@@ -1,4 +1,4 @@
-package com.mavixk.ds;
+package com.mavixk.ds.Recursion;
 
 import java.util.*;
 
