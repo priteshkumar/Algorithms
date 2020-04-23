@@ -3,9 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>OOP CONCEPTS</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style>
+  body{
+    background:#f0f0f0;
+    font-size:18px;
+  }
+    #main{
+      padding-top:20px;
+      margin-left:20%;
+    }
+    .page-header{
+      text-align:center;
+    }
+  </style>
 </head>
 <body>
-<div><p>
+<div class="page-header">
+  <h2>PGDSD STUDY NOTES</h2>
+</div>
+<nav aria-label="...">
+  <ul class="pager">
+    <li><a href="oop.html">OOP</a></li>
+    <li><a href="exceptions.html">Exceptions</a></li>
+  </ul>
+</nav>
+<div id="main"><p>
+  <div>
+  <h3>Constructors</h3>
   constructor initialize object/instance variables
 </p>
   <p>
@@ -21,7 +46,9 @@
     this()/super() should be first statement in constructor code.
     if not mentioned , compiler adds it accordingly
   </p>
-  <hr/>
+</div>
+  <br/>
+<div><h3>Static keyword</h3>
   <p>
     static is used for memory management , all objects share static variable of a class
   </p>
@@ -33,7 +60,9 @@
     <b>static method cannot be inherited in the sub class because they belong to the class in which
       they have been declared</b>
   </p>
-  <hr/>
+</div>
+<br/>
+<div><h3>Final keyword</h3>
   <p>
     final variables remain constant in program execution and cannot be changed.
   </p>
@@ -43,7 +72,9 @@
   <p>
     final classes can be instantiated but cannot be extended.
   </p>
-  <hr/>
+</div>
+  <br/>
+<div><h3>Encapsulation</h3>
   <p>
     outer class cannot be declared private.
   </p>
@@ -54,8 +85,114 @@
     class can be made immutable via encapsulation by parametrized constructor/not providing setters
   </p>
   <p>
-    class/interfaces cannot be declared private/protected.
+    Outer class/interfaces cannot be declared private/protected.
   </p>
+</div>
+  <br/>
+<div><h3>Inheritance</h3>
+  <p>
+    inheritance can cause wastage of memory
+  </p>
+  <p>
+    inherited methods work slower and has performance impact
+  </p>
+  <p>
+    inheritance leads to increased coupling
+  </p>
+  <p>
+    if parent class has no default constructor and only parameterized constructor,
+    then compiler will not insert default constructor in subclass.
+    this can lead to compile time error.
+  </p>
+  <p>
+    only subclass instance is created and not superclass with below statement
+    Rectangle r = new Rectangle(3,4);//here Rectangle inherits from Shape class
+  </p>
+</div>
+<br/>
+  <div>
+    <h3>Polymorphism</h3>
+  <p>
+    overridden methods have same name/signature/return type in superclass/subclass
+  </p>
+  <p>
+    <b>private/final/static</b> methods from superclass cannot be overridden in subclass
+  </p>
+    <p>
+      <b>Data members</b> cannot be overridden in dynamic polymorphism
+    </p>
+  <p>
+    overridden methods cannot be more <b>restrictive</b> in access as compared to superclass
+    e.g. method which is <b>public</b> in superclass cannot be made <b>private</b> in subclass
+  </p>
+  <p>
+    Method overloading is compile time/static polymorphism.
+  </p>
+  <p>
+    In overloaded methods , return type need not be same.
+  </p>
+  <p>
+    Method overloading is static polymorphism
+    Method overriding is run time/dynamic polymorphism
+  </p>
+    <p>
+      <b>static methods</b> cannot be overridden. they dont adhere to run time polymorphism
+      class reference type will determine whether parent class or child class static method is
+      called.
+    </p>
+  </div>
+  <br/>
+  <div>
+    <h3>Abstract class</h3>
+    <p>
+      Abstract classes cannot be instantiated, they act as a base class
+    </p>
+    Abstract class can have abstract/concrete methods.
+    </p>
+    <p>
+      Abstract class may not have any abstract methods.
+    </p>
+    <p>
+      Derived class of parent abstract class must implement all abstract methods declared in
+      parent class.
+    </p>
+  </div>
+  <br/>
+  <div>
+    <h3>Interfaces</h3>
+  <p>
+    Interface is pure abstract class , having abstract methods and constant class vars(static
+    final variables)
+  </p>
+    <p>
+      Interface can have static/default methods which are concrete
+    </p>
+    <p>
+      Interface outside any class/interface can have only default/public access modifier.
+    </p>
+    <p>
+      Interfaces <b>inside</b> other classes can have any access modifier(private/public/protected).
+    </p>
+    <p>
+      Class can implement many interfaces.
+    </p>
+    <p>
+      Interface can extend many other interfaces.
+    </p>
+    <p>
+      When a class and an interface contain a method having the same signature,</p>
+      <p>then the preference is given to the definition declared in the class
+        and the definition mentioned in the interface is discarded.</p>
+    </p>
+    <p>Variables in an interface are <b>static and final</b>.</p>
+    <p>This is because you cannot use an interface directly and for implementation.</p>
+    <p>it needs a class or another interface</p>
+    </p>
+    <p>
+      class implementing a subclassed interface has to implement
+      all methods in the interface hierarchy
+    </p>
+  </div>
 </div>
 </body>
 </html>

@@ -44,6 +44,7 @@ class Bank2 extends HomeLoan{
 
 public class BankingDemo {
   public static void main(String[] args){
+    
     Bank1 a = new Bank1(23400.2,2);
     Bank2 b = new Bank2(23400.2,2);
     if(a.getRateOfIntererst() < b.getRateOfIntererst()){

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OOP CONCEPTS</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <style>
+  body{
+    background:#f0f0f0;
+    font-size:18px;
+  }
+    #main{
+      padding-top:20px;
+      margin-left:20%;
+    }
+    .page-header{
+      text-align:center;
+    }
+    .well{
+      margin-right:40%;
+      font-size:18px;
+    }
+    figure{
+      margin-top:40px;
+      margin-right:40%;
+    }
+    figcaption{
+      font-weight:bold;
+    }
+    pre,code{
+      font-size:16px;
+      overflow:auto;
+    }
+    pre > code {
+      display: block;
+      word-wrap: normal;
+    }
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <h2>PGDSD STUDY NOTES</h2>
+</div>
+<nav aria-label="...">
+  <ul class="pager">
+    <li><a href="oop.html">OOP</a></li>
+    <li><a href="exceptions.html">Exceptions</a></li>
+  </ul>
+</nav>
+<div id="main"><p>
+  <div>
+  <h3>Exception Basics</h3>
+  <div>
+  <p>java.lang.Throwable is the base class for all exceptions/errors.</p>
+  <p>There are exceptions and errors</p>
+  <p>
+    Checked exceptions are detected by compiler.
+  </p>
+  <p>
+    Runtime/unchecked exceptions are detected at run time.
+  </p>
+  <p>
+    IOException/FileNotFoundException/UserException are checked exceptions
+  </p>
+  <p>
+    Subclasses of runtime exceptions are: NullPointerException/ArrayIndexOutofBounds exceptions.
+  </p>
+  <p>
+    Errors are beyond programmer's control. e.g. IOError/StackOverflow error
+  </p>
+</div>
+<br/>
+<div><h3>Try-Catch</h3>
+  <p>
+    exception prone code can be wrapped in try/catch/finally block.
+  </p>
+  <p>
+    try block should be followed by catch or finallly blocks.
+  </p>
+  <p>
+    If a catch block catches the exception or is the base class for thrown exception , it will
+    handle it.
+  </p>
+  <p>
+    Catch blocks should be specified from specific to generic exceptions.
+  </p>
+  <div class="well">
+    <p><b>In below code , Arithmetic exception will be thrown as 100/0 is calculated first.</b></p>
+    <p>try {</p>
+    <p>int a[]=new int[5];</p>
+    <p>a[5] = 100/0;</p>
+    </p>} catch(Exception e) {</p>
+  <p>System.out.println(e);</p>
+  <p>}</p>
+  </div>
+  <p>
+    Java try block can be followed by either the catch or finally block.</p>
+    <p>Java catch block must follow try block. Java finally block can follow either the try or
+    catch block.</p>
+  <div class="well">
+    <p><b>In below code , since return is present inside catch , finally block executes and
+      exits.</b></p>
+    <p><b>Code after finally block is not executed</b></p>
+    <p>try{</p>
+    <p> int x = 50/0;</p>
+    <p>}</p>
+    <p>catch (Exception e){</p>
+    <p> return;</p>
+    <p>}</p>
+    <p>finally {</p>
+    <p> System.out.println("Code inside finally");</p>
+    <p>}</p>
+    <p>System.out.println("rest of the code");</p>
+  </div>
+  <figure>
+    <figcaption>Finally block compile error</figcaption>
+    <pre>
+    <code>
+      <b>Return inside finally block makes outside code unreachable, causes compile error</b>
+      try{
+            int x = 50/0;
+        }
+        catch (Exception e){
+        }
+        finally {
+            System.out.println("Code inside finally");
+            return;
+        }
+        System.out.println("rest of the code");
+    </code>
+  </pre>
+  </figure>
+  <figure>
+    <figcaption>Catch block compile error</figcaption>
+    <pre>
+    <code>
+      <b>First catch block (base exception class) makes other catch blocks unreachable</b>
+      <b>This causes compile error</b>
+
+      try{
+        int x = 100/0;
+      }
+      catch(Exception e){System.out.println("Exception occurred");}
+      catch(RuntimeException e){System.out.println("RuntimeException occurred");}
+      catch(ArithmeticException e){System.out.println("ArithmeticException occurred");}
+    </code>
+  </pre>
+  </figure>
+  <figure>
+    <figcaption>Finally block code execution</figcaption>
+    <pre>
+    <code>
+      <b>finally block code always executes whether exception is handled or not</b>
+      <b>finally block will be skipped if there is fatal error/system exit in try/catch</b>
+
+      try {
+        System.out.print(50 / 0);
+      }
+      finally {
+        System.out.println("code inside finally block");
+      }
+    </code>
+  </pre>
+  </figure>
+  <figure>
+    <figcaption>Outer Exception handling</figcaption>
+    <pre>
+      <code>
+        <b>Below code shows handled exceptions by outer functions</b>
+        public class test {
+          public static void main(String args[]) {
+            fun1(50);
+            System.out.println("In main");
+          }
+
+          static void fun1(int n){
+            try {
+              fun2(n);
+            }
+            catch (Exception e) {
+              System.out.println(e);
+            }
+            System.out.println("In fun1");
+          }
+
+          static void fun2(int n){
+            fun3(n);
+            System.out.println("In fun2");
+          }
+
+          static void fun3(int n) {
+            if (n < 60)
+              throw new ArithmeticException("Not Eligible");
+            else
+              System.out.println("Eligible for pension");
+          }
+        }
+
+        <b>Output:</b>
+        <samp>java.lang.ArithmeticException: Not Eligible</samp>
+        <samp>In fun1</samp>
+        <samp>In main</samp>
+      </code>
+    </pre>
+  </figure>
+  <figure>
+    <pre>
+      <code>
+        <b>here arithmetic exception occurs and skips rest of try block.</b>
+        <b>finally block code executes and runtime exception is thrown.</b>
+
+        try {
+          System.out.print(50 / 0);
+          System.exit(0);
+        }
+        finally {
+          System.out.println("code inside finally block");
+        }
+
+
+        <b>Output:</b>
+        <samp>code inside finally block</samp>
+        <samp>Runtime exception</samp>
+      </code>
+    </pre>
+  </figure>
+</div>
+</body>
+</html>
