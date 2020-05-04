@@ -5,7 +5,7 @@ public class SortStack {
   public static void main(String[] args){
 
     Scanner scan = new Scanner(System.in);
-    Integer.valueOf("+");
+    //Integer.valueOf("+");
     int n = scan.nextInt();
     Stack<Integer> s = new Stack<Integer>();
 
