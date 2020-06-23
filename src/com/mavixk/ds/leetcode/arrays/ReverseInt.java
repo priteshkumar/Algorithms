@@ -3,6 +3,10 @@ package mavixk.ds.leetcode.search;
 public class ReverseInt {
 
   public static void main(String[] args) {
+    int[] a = { 3, 4};
+    int[] b = { 7 , 9};
+    System.arraycopy(b,0,a,0,b.length);
+    System.out.println(a[0] + " " + a[1]);
     reverse(473);
     reverse(-473);
     reverse(1000000045);
