@@ -9,6 +9,11 @@ public class MinDiffTriplet {
     //int a[] = {15, 12, 18, 9};
     //int b[] = {10, 17, 13, 8};
     //int c[] = {14, 16, 10, 5};
+    int s1 = 2147483647;
+    int s2 = 2147483645;
+    System.out.println(Integer.MAX_VALUE);
+    long res = (long)Math.min(s1,s2) * 5 * 1;
+    System.out.println(res);
 
     int[] a = {1,2,3,4,5,6,7};
     int[] b = {8,9,10,5,11};
