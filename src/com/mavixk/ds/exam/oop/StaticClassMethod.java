@@ -14,6 +14,7 @@ class DevOpsTool {
   public DevOpsTool(String name, String sourcelang) {
     this.name = name;
     this.sourcelang = sourcelang;
+    System.out.println(this.getClass().getName());
   }
 
   static void printBaseConfig() {
