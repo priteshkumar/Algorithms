@@ -26,6 +26,8 @@ public class ReverseStackHalf {
     }
     deleteBottom(s,s.size(),s.size());
     System.out.println(s);
+    reverseSt(s);
+    System.out.println(s);
   }
 
   // {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
@@ -73,4 +75,21 @@ public class ReverseStackHalf {
     }
   }
 
+  public static void reverseSt(Stack<Integer> s){
+    if(s.empty() == false){
+      int val = s.pop();
+      reverseSt(s);
+      insertLast(s,val);
+    }
+  }
+
+  public static void insertLast(Stack<Integer> s, int val){
+    if(s.empty() == true)
+      s.push(val);
+    else{
+      int x = s.pop();
+      insertLast(s,val);
+      s.push(x);
+    }
+  }
 }
