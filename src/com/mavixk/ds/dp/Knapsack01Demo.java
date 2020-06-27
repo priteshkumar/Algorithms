@@ -68,6 +68,7 @@ public class Knapsack01Demo {
           result[i][j] = result[i-1][j];
       }
     }
+
     int i = w.length;
     int j = W;
     while(i > 0 && j > 0){
